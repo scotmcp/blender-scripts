@@ -1,6 +1,8 @@
-## Script Created by Scot McPherson, can check out their future stuff:
+## Script Created by Scot McPherson:
 ## https://www.youtube.com/channel/UCNDREeLwXewcJzyiMYF9kMA
-
+##
+## Original Script Created by MissingLinkDev - https://www.youtube.com/channel/UCnPYqCSU-CFppoufb7BKuAg
+##
 ## You can buy explosive.ws animations for godot here:
 ## https://www.explosive.ws/products/rpg-animation-fbx-for-godot-blender
 

@@ -6,35 +6,43 @@
 ## You can buy explosive.ws animations for godot here:
 ## https://www.explosive.ws/products/rpg-animation-fbx-for-godot-blender
 
+## Before you start, you should save the blender default startup environment to your presets folder
+
+
+## List of animation libraries that need to have their Rotation X set to 0
+## 2h Crossbow
+## 2h Spear
+## 2h Sword
+## Armed_Shield
+## Climbing-Ladder
+## Climbing-Ledge
+## Crawl
+## Swimming
+
 
 
 import bpy
 import os
 import math
 
-
 # Update this with the directory that contains the import folder
+folder_path = "/home/scot/Assets/Animations/ExplosiveLLC/RPG Animation FBX-0.0.6/Unarmed"
 
-folder_path = "/home/scot/Assets/Animations/ExplosiveLLC/RPG Animation FBX-0.0.6/2Hand Staff"
-
-# Update this with the directory and filename you want to put the exported GLB file.
-#export_file_path = "/home/scot/Assets/Animations/ExplosiveLLC/GLB/2hand_staff.glb"
-
-
-# Starting Cube and it's Collection
-collection = bpy.data.collections.get("Collection")
-
+# Setup some variables
 weapon = "Crossbow"  # Name of weapon in case it exists in anim (it shouldn't)
-
 rotate_z = True # rotate the animation by 180 on Z
 remove_root_motion = True # remove the root motion location fcurves from animations, root rotation and root scale fcurves are not removed.
+
+# Setup the environment
+collection = bpy.data.collections.get("Collection") # Starting Cube and it's Collection
+#bpy.ops.wm.read_factory_settings(use_empty=True) # Reset to default startup environment
 
 
 if not os.path.isdir(folder_path):
     print(f"Error: '{folder_path}' is not a valid directory.")
 
 else:
-    
+
     # Delete the starting cube and collection
     if collection is not None:
         # Iterate over all objects in the collection and unlink them

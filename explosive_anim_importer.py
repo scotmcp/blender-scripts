@@ -1,23 +1,27 @@
 ## Script Created by Scot McPherson:
 ## https://www.youtube.com/channel/UCNDREeLwXewcJzyiMYF9kMA
 ##
-## Original Script Created by MissingLinkDev - https://www.youtube.com/channel/UCnPYqCSU-CFppoufb7BKuAg
+## Original Script Created by MissingLinkDev:
+## https://www.youtube.com/channel/UCnPYqCSU-CFppoufb7BKuAg
 ##
 ## You can buy explosive.ws animations for godot here:
 ## https://www.explosive.ws/products/rpg-animation-fbx-for-godot-blender
 
-## Before you start, you should save the blender default startup environment to your presets folder
 
 
-## List of animation libraries that need to have their Rotation X set to 0
-## 2h Crossbow
-## 2h Spear
-## 2h Sword
-## Armed_Shield
-## Climbing-Ladder
-## Climbing-Ledge
-## Crawl
-## Swimming
+## Todo:
+##  List of animation libraries that need to have their Rotation X set to 0 and Rotation Applied
+##  2h Crossbow
+##  2h Spear
+##  2h Sword
+##  Armed_Shield
+##  Climbing-Ladder
+##  Climbing-Ledge
+##  Crawl
+##  Swimming
+
+## explosive version 0.0.6 and earlier, this is already fixed in future version
+##  Crouch Walk Left - Delete Pelvis X Motion
 
 
 
@@ -26,12 +30,13 @@ import os
 import math
 
 # Update this with the directory that contains the import folder
-folder_path = "/home/scot/Assets/Animations/ExplosiveLLC/RPG Animation FBX-0.0.6/Unarmed"
+folder_path = "/home/scot/Assets/Animations/ExplosiveLLC/RPG Animation FBX-0.0.6/Relax"
 
 # Setup some variables
 weapon = "Crossbow"  # Name of weapon in case it exists in anim (it shouldn't)
 rotate_z = True # rotate the animation by 180 on Z
 remove_root_motion = True # remove the root motion location fcurves from animations, root rotation and root scale fcurves are not removed.
+remove_mesh = True # remove the final mesh inside the armature that causes warnings in Godot
 
 # Setup the environment
 collection = bpy.data.collections.get("Collection") # Starting Cube and it's Collection
@@ -100,6 +105,12 @@ else:
         for object in bpy.context.scene.objects:
             if object.name == "Armature.001" or object.name == "RPG-Character-Mesh.001":
                 bpy.data.objects.remove(object)
+
+            # If True then delete final mesh
+            elif object.name == "RPG-Character-Mesh":
+                if remove_mesh == True:
+                    bpy.data.objects.remove(object)
+                
 
         # Rotate the animation to face 180 degrees Z so it faces forward in godot
         if rotate_z == True:

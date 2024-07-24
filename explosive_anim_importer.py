@@ -36,7 +36,7 @@ folder_path = "/home/scot/Assets/Animations/ExplosiveLLC/RPG Animation FBX-0.0.6
 weapon = "Crossbow"  # Name of weapon in case it exists in anim (it shouldn't)
 rotate_z = True # rotate the animation by 180 on Z
 remove_root_motion = True # remove the root motion location fcurves from animations, root rotation and root scale fcurves are not removed.
-remove_mesh = True # remove the final mesh inside the armature that causes warnings in Godot
+remove_mesh = False # Experimental: remove the final mesh inside the armature that causes warnings in Godot
 
 # Setup the environment
 collection = bpy.data.collections.get("Collection") # Starting Cube and it's Collection
